@@ -2,7 +2,11 @@
 
 - Level: system / subsystem / protocol
 - Category: safety / authorization / confidentiality / integrity / availability / recovery / operational policy
+- Ambiguity status: clear / gray / conflicting / unknown
+- Ambiguity rationale and competing interpretations:
 - Requirement status: proposed / spec supported / human approved / disputed / retired
+- Human verification: pending / verified / corrected / rejected / disputed / deferred
+- Verification date and decision reference:
 - Enforcement status: untraced / traced / exercised / counterexample reproduced
 - Source baseline:
 - Property: precise conditional statement or equation

@@ -30,17 +30,23 @@ Derive candidate invariants from normative specifications, architecture, interfa
 
 Each invariant must state a falsifiable property, category, scope, preconditions, trusted services, attacker input, legitimate exceptions, consumer obligations, temporal cases, and an observable oracle. Identify what each producer promises and each consumer assumes. Avoid circular reliance between layers.
 
-Track requirement status separately from enforcement status. Use the invariant template.
+For each invariant, perform an ambiguity sweep. Look for overloaded security terms, unstated time windows, lifecycle transitions, partial success, stale or conflicting authorities, local versus remote state, recovery behavior, producer-consumer mismatches, and cases where tests merely preserve current implementation behavior. Classify the invariant as clear, gray, conflicting, or unknown and explain the classification.
+
+Track requirement status, human verification, and enforcement status separately. Use the invariant template.
 
 ## 4. Resolve material ambiguity through interviews
 
-Investigate code and specifications first. Interview the user only when a requirement is vague, undefined, conflicting, or materially unclear.
+Investigate code and specifications first. Proactively interview the user whenever a requirement is vague, undefined, conflicting, materially unclear, or admits multiple reasonable security interpretations. Do not resolve gray areas by selecting the interpretation that best matches current code.
 
 Present one concrete distinguishing example at a time when practical. Explain the plausible interpretations and how each changes the test oracle. Record the answer with date, provenance, affected invariant IDs, accepted meaning, limits, and conflicts.
 
-Conduct the interview in the active agent session. Ask only questions whose answers materially affect scope, threat assumptions, invariant meaning, priority, or the test oracle. Do not ask the user for facts that source inspection can establish. Apply each answer to the catalog on the user's behalf.
+Conduct the interview in the active agent session. Ask questions whose answers materially affect scope, threat assumptions, invariant meaning, priority, or the test oracle. Do not ask the user for facts that source inspection can establish. Apply each answer to the catalog on the user's behalf.
 
-Silence is not approval. Implementation behavior and existing tests are not automatically the intended contract. An unresolved requirement may guide exploration but cannot alone justify a confirmed invariant-violation finding.
+Present detected system invariants first, followed by manageable subsystem and protocol batches. Require the user to verify, correct, reject, dispute, or defer every selected invariant. Record the result in `interviews/VERIFICATION.md`. A generic approval question is not a substitute for this ledger.
+
+For each gray, conflicting, or unknown invariant, present the invariant ID, current interpretation, competing interpretation, one boundary example, and the different expected outcomes. Ask one distinguishing question. If the answer reveals another material branch, continue the interview until the test oracle is precise or the invariant is explicitly deferred.
+
+Silence is not approval. Implementation behavior and existing tests are not automatically the intended contract. Broad scanning cannot begin until every selected invariant has recorded human verification and no unasked gray area remains. A deferred or disputed requirement may guide exploration but cannot alone justify a confirmed invariant-violation finding.
 
 ## 5. Discover entry points and controlled data
 

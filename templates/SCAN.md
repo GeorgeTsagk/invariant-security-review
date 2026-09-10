@@ -9,6 +9,7 @@
 - Build tags and binary provenance:
 - Deployment configuration and storage backends:
 - Subsystems, invariant IDs, and entry-point IDs:
+- Invariant verification ledger and remaining gray areas:
 - Threat-model approval and decision reference:
 - Trusted services and attacker capabilities:
 - Open requirements and decision references:

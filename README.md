@@ -12,7 +12,7 @@ Clone or copy this repository, launch a compatible agent CLI from its root, and 
 
 The user does not populate catalog files manually. The agent inspects the target source and available specifications, fills in [PROJECT.md](PROJECT.md), [BASELINE.md](BASELINE.md), and [THREAT_MODEL.md](THREAT_MODEL.md), creates subsystem and protocol invariants under [subsystems](subsystems), and maintains all run and finding records.
 
-When project intent cannot be established from evidence, the agent asks a concrete question in the session, explains the interpretations and their effect on the test oracle, then records the answer. The agent presents the synthesized threat model and invariant scope for approval before a broad scan.
+The agent actively searches every detected invariant for gray areas. When project intent cannot be established from evidence, it asks a concrete scenario question in the session, explains the interpretations and their effect on the test oracle, then records the answer. It presents system invariants first and subsystem or protocol invariants in manageable batches. The user verifies, corrects, rejects, disputes, or defers each invariant before a broad scan begins.
 
 The repository is also an installable skill. Its [SKILL.md](SKILL.md) instructs compatible agents to follow [METHODOLOGY.md](METHODOLOGY.md) and use the included templates.
 
