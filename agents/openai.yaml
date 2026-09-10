@@ -1,6 +1,6 @@
 interface:
   display_name: "Invariant Security Review"
   short_description: "Structured invariant-driven code security scans"
-  default_prompt: "Use $invariant-security-review to inspect the target repository, build and maintain the review catalog, challenge gray areas, and have me verify each detected invariant before an evidence-backed security review."
+  default_prompt: "Use $invariant-security-review to inspect the target repository, build the review catalog, have me verify invariants, then stop so I can select prioritized subsystems or a global scan."
 policy:
   allow_implicit_invocation: true

@@ -48,7 +48,17 @@ For each gray, conflicting, or unknown invariant, present the invariant ID, curr
 
 Silence is not approval. Implementation behavior and existing tests are not automatically the intended contract. Broad scanning cannot begin until every selected invariant has recorded human verification and no unasked gray area remains. A deferred or disputed requirement may guide exploration but cannot alone justify a confirmed invariant-violation finding.
 
-## 5. Discover entry points and controlled data
+## 5. Stop and obtain scan-scope selection
+
+After threat-model and invariant verification, rank the discovered subsystems by review priority. Consider protected-asset impact, attacker reachability, trust boundaries, privilege, protocol and state-machine complexity, persistence and recovery risk, code churn, and unresolved uncertainty. This rank prioritizes review effort and must not be presented as vulnerability severity.
+
+Present all in-scope subsystems in a concise multi-select list with stable names, responsibilities, rank rationales, and relevant system-invariant IDs. Recommend a starting selection based on the ranking. Always include a distinct `Global scan` option covering every in-scope subsystem.
+
+Stop and wait for the user's selection. Threat-model approval and invariant verification do not authorize scanning. Never infer global scope from a generic request to review or audit the repository. If the interface lacks a multi-select control, accept multiple numbered choices in conversation. Record the exact selection in the scan manifest.
+
+Analyze only the chosen scope. `Global scan` supersedes individual choices. Return to this gate before expanding into an unselected subsystem.
+
+## 6. Discover entry points and controlled data
 
 Enumerate every in-scope production entry point: network routes, RPCs, message handlers, file parsers, command interfaces, callbacks, queues, plugins, database restoration, startup recovery, and dependency responses. Identify authorization gates and every attacker-controlled field.
 
@@ -56,19 +66,19 @@ Tests, examples, generated code, and vendored code are not primary production en
 
 Account for entry points explicitly so broad coverage can be measured.
 
-## 6. Enrich context across boundaries
+## 7. Enrich context across boundaries
 
 For each selected entry point, trace control flow and data flow through parsing, validation, authorization, transformation, persistence, asynchronous work, external effects, recovery, and consumers. Inspect concrete interface implementations and dependency guarantees.
 
 Follow multi-hop paths. A missing check in one helper is not a finding if another reachable layer enforces the property. A valid intermediate result must not be used outside its verification contract.
 
-## 7. Generate hypotheses
+## 8. Generate hypotheses
 
 Brainstorm concrete invariant failures with limited self-filtering. Cover access control, data-flow sinks, identity binding, parser differentials, arithmetic boundaries, replay, concurrency, partial writes, cancellation, restart, reorg, downgrade, resource exhaustion, and inconsistent consumer assumptions.
 
 Each hypothesis records attacker, controlled input, preconditions, complete candidate path, violated invariant, expected consequence, confidence, and the next falsifying experiment. Apply a documented confidence filter to prioritize validation without deleting low-confidence coverage records.
 
-## 8. Validate skeptically
+## 9. Validate skeptically
 
 Use a fresh validation pass to search for counterevidence: earlier and later checks, unreachable states, privilege restrictions, dependency guarantees, legitimate exceptions, alternate paths, and compensating recovery.
 
@@ -81,7 +91,7 @@ Classify each hypothesis as:
 
 When independent reviewers or agents are authorized, give them clean evidence packets and ask them to falsify the hypothesis. Their agreement is not proof.
 
-## 9. Reproduce dynamically
+## 10. Reproduce dynamically
 
 Begin with the smallest meaningful test, then cross the real boundary when reachability, configuration, persistence, or external effects matter. Use a valid control and an adversarial case. Assert the violated consequence, not merely a suspicious return value.
 
@@ -89,7 +99,7 @@ A regression-style reproduction should fail against the vulnerable revision and 
 
 Record source revisions, environment, commands, inputs, seeds, expected and actual outcomes, persistent state, logs, and limitations. Resource findings require measured workloads and budgets. Model reasoning alone is never reproduced evidence.
 
-## 10. Deduplicate, prioritize, and hand off
+## 11. Deduplicate, prioritize, and hand off
 
 Deduplicate by root cause and invariant while preserving affected entry points. Rate priority from demonstrated impact, reachability, attacker prerequisites, scale, and recovery. Track confidence separately.
 
@@ -97,7 +107,7 @@ Use the project's approved priority policy. If none exists, propose one and obta
 
 Human expert review remains the final quality gate. Confirm the attack path and dynamic evidence before disclosure or remediation. Keep findings private unless the user explicitly authorizes publication.
 
-## 11. Account for coverage and evaluate the process
+## 12. Account for coverage and evaluate the process
 
 A run must account for every selected invariant and entry point as analyzed, exercised, disproven, rejected, unresolved, out of scope, or not examined. State gaps and decisions still needed. No findings is not a correctness guarantee.
 

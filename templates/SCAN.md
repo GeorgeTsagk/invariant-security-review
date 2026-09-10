@@ -11,6 +11,11 @@
 - Subsystems, invariant IDs, and entry-point IDs:
 - Invariant verification ledger and remaining gray areas:
 - Threat-model approval and decision reference:
+- Ranked subsystem options shown to the user:
+- User-selected subsystems and order:
+- Global scan selected: yes / no
+- Selection date and session reference:
+- Explicitly unselected subsystems:
 - Trusted services and attacker capabilities:
 - Open requirements and decision references:
 - Time or resource budget, if assigned:
