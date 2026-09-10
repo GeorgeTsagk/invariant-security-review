@@ -1,0 +1,21 @@
+# ID: Short property name
+
+- Level: system / subsystem / protocol
+- Category: safety / authorization / confidentiality / integrity / availability / recovery / operational policy
+- Requirement status: proposed / spec supported / human approved / disputed / retired
+- Enforcement status: untraced / traced / exercised / counterexample reproduced
+- Source baseline:
+- Property: precise conditional statement or equation
+- Scope: versions, operations, deployment profiles, and storage backends
+- Preconditions and trusted services:
+- Attacker capabilities and controlled input:
+- Normative evidence:
+- Implementation evidence:
+- Entry points and concrete enforcement path:
+- Consumer obligations and related invariant IDs:
+- Legitimate exceptions and partial-verification modes:
+- Test oracle, including valid and adversarial cases:
+- Temporal cases, including retry, concurrency, crash, and reorg:
+- Open questions and decision references:
+- Validation evidence:
+- Coverage gaps and last reviewed revision:

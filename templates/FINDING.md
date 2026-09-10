@@ -1,0 +1,23 @@
+# P<priority>: Concrete violated behavior
+
+- Priority and project rubric:
+- Confidence:
+- Disposition: reproduced
+- Subsystem and invariant IDs:
+- Originating run:
+- Source and catalog commits:
+- Deployment and attacker prerequisites:
+- Controlled input and complete path:
+- Existing controls and why they do not prevent the case:
+- Expected behavior:
+- Actual behavior and demonstrated impact:
+- Reproduction patch, command, configuration, and logs:
+- Valid control and test convention:
+- Persistent, restart, or external effects:
+- Counterevidence, uncertainty, and coverage limits:
+- Root cause and affected entry points:
+- Duplicate or related finding links:
+- Remediation, only if requested:
+- Regression evidence, if patched:
+- Human review status:
+- Disclosure status: local only unless explicitly authorized
