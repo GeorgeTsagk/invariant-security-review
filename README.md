@@ -6,15 +6,22 @@ This methodology adapts the sequential review architecture described by Mandiant
 
 ## Use
 
-Clone or copy this repository as the security catalog for a target project. Fill in [PROJECT.md](PROJECT.md), [BASELINE.md](BASELINE.md), and [THREAT_MODEL.md](THREAT_MODEL.md), then define subsystem invariants under [subsystems](subsystems).
+Clone or copy this repository, launch a compatible agent CLI from its root, and describe the target repository and review goal in conversation. `AGENTS.md` provides automatic onboarding for Codex and compatible tools, while `CLAUDE.md` routes Claude-compatible tools to the same instructions. For example:
+
+> Review `/path/to/project`, starting with authentication and transaction processing. Interview me wherever the intended security invariants are unclear.
+
+The user does not populate catalog files manually. The agent inspects the target source and available specifications, fills in [PROJECT.md](PROJECT.md), [BASELINE.md](BASELINE.md), and [THREAT_MODEL.md](THREAT_MODEL.md), creates subsystem and protocol invariants under [subsystems](subsystems), and maintains all run and finding records.
+
+When project intent cannot be established from evidence, the agent asks a concrete question in the session, explains the interpretations and their effect on the test oracle, then records the answer. The agent presents the synthesized threat model and invariant scope for approval before a broad scan.
 
 The repository is also an installable skill. Its [SKILL.md](SKILL.md) instructs compatible agents to follow [METHODOLOGY.md](METHODOLOGY.md) and use the included templates.
 
-Keep the catalog separate from production source. Use isolated source worktrees for experiments. Store reproducible evidence under `runs/`, and promote only validated issues into `findings/`.
+Keep the catalog separate from production source. The agent should use isolated source worktrees for experiments, store reproducible evidence under `runs/`, and promote only validated issues into `findings/`.
 
 ## Layout
 
 - `PROJECT.md`: purpose, architecture, supported deployments, and trust boundaries.
+- `AGENTS.md` and `CLAUDE.md`: automatic agent CLI entrypoints.
 - `BASELINE.md`: pinned source and execution environment.
 - `THREAT_MODEL.md`: assets, actors, entry points, trust assumptions, and approval state.
 - `subsystems/`: system, subsystem, and protocol invariants.
