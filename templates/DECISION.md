@@ -1,6 +1,7 @@
 # D-000: Short decision
 
 - Date:
+- Recording pass and agent:
 - Question and distinguishing example:
 - Affected invariant IDs:
 - Evidence reviewed before asking:

@@ -1,5 +1,17 @@
 # ID: Short property name
 
+## Review history
+
+Record one row per pass that substantively examines this invariant. Combine actions for the same pass.
+
+| Pass ID | Agent | Action | Date | Source baseline | Notes |
+| --- | --- | --- | --- | --- | --- |
+| None | | | | | |
+
+Actions include created, read, modified, challenged, revalidated, and retired.
+
+## Invariant
+
 - Level: system / subsystem / protocol
 - Category: safety / authorization / confidentiality / integrity / availability / recovery / operational policy
 - Ambiguity status: clear / gray / conflicting / unknown

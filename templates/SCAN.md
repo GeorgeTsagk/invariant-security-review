@@ -3,6 +3,7 @@
 ## Manifest
 
 - Date and run ID:
+- Participating pass IDs and agent names:
 - Source repository and commit:
 - Catalog commit:
 - Toolchain, dependencies, and replacements:

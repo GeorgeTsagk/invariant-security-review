@@ -1,5 +1,7 @@
 # H-000: Candidate violated behavior
 
+- Originating pass and agent:
+- Validation passes and agents:
 - Status: generated / validating / ready for reproduction / disproven / rejected / unresolved / promoted
 - Subsystem and invariant IDs:
 - Attacker and prerequisites:

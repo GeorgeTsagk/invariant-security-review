@@ -9,4 +9,6 @@ Each run contains:
 - `repro/`: minimized test patches and inputs.
 - `logs/`: captured outputs with secrets removed.
 
+Every run links its participating agent pass records. A pass may contribute to several runs, and a run may include several agents. The pass records show individual responsibility; the run manifest shows combined scan coverage.
+
 Link reproduced findings to their canonical reports under `findings/`. Preserve failed experiments and unresolved paths so later reviewers do not mistake silence for coverage.

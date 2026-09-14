@@ -12,6 +12,8 @@ Clone or copy this repository, launch a compatible agent CLI from its root, and 
 
 The user does not populate catalog files manually. The agent inspects the target source and available specifications, fills in [PROJECT.md](PROJECT.md), [BASELINE.md](BASELINE.md), and [THREAT_MODEL.md](THREAT_MODEL.md), creates subsystem and protocol invariants under [subsystems](subsystems), and maintains all run and finding records.
 
+Every agent registers a durable pass before analysis. [REVIEW_LOG.md](REVIEW_LOG.md) shows who reviewed what, while detailed records under [passes](passes) capture exact scope, invariant reads and writes, evidence, outputs, and handoff. Existing invariants are discovered through [the subsystem index](subsystems/INDEX.md) and retain per-agent review history across passes.
+
 The agent actively searches every detected invariant for gray areas. When project intent cannot be established from evidence, it asks a concrete scenario question in the session, explains the interpretations and their effect on the test oracle, then records the answer. It presents system invariants first and subsystem or protocol invariants in manageable batches. The user verifies, corrects, rejects, disputes, or defers each invariant.
 
 The agent then stops, ranks all discovered subsystems by review priority, and asks the user to select one or more. The choices always include a separate `Global scan` option. No scan starts until the user selects its scope.
@@ -26,6 +28,8 @@ Keep the catalog separate from production source. The agent should use isolated 
 - `AGENTS.md` and `CLAUDE.md`: automatic agent CLI entrypoints.
 - `BASELINE.md`: pinned source and execution environment.
 - `THREAT_MODEL.md`: assets, actors, entry points, trust assumptions, and approval state.
+- `REVIEW_LOG.md`: repository-wide overview of agent passes and coverage.
+- `passes/`: detailed, immutable-identity pass records and handoffs.
 - `subsystems/`: system, subsystem, and protocol invariants.
 - `interviews/`: unresolved questions and scoped human decisions.
 - `runs/`: scan manifests, hypotheses, experiments, and logs.

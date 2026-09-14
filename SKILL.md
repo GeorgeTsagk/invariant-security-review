@@ -13,12 +13,25 @@ Read [METHODOLOGY.md](METHODOLOGY.md) completely before beginning a review. Pres
 
 The user operates this workflow through conversation. Own catalog initialization and maintenance. Do not instruct the user to fill templates or edit catalog files. If the target repository is not identifiable, ask for its path or URL. Otherwise inspect it and begin.
 
+## Pass registration and prior work
+
+Before target analysis, register this agent pass:
+
+1. Choose a stable pass ID and agent name. Use runtime identity when available; otherwise use a unique local label. Record provider, model, CLI, and session ID only when known. Never invent identity metadata.
+2. Create `passes/<pass-id>.md` from the pass template with status `in progress` and add it to `REVIEW_LOG.md`.
+3. Enumerate files and invariant IDs under `subsystems/`, then reconcile them with `subsystems/INDEX.md`. The index is a discovery aid, not the sole authority. Repair missing or stale index entries. Read relevant invariant files, `interviews/VERIFICATION.md`, applicable decisions, prior passes, runs, and findings before proposing new invariants or repeating analysis.
+4. Treat existing invariants as persistent review state. Update them in place when they describe the same property. Preserve stable IDs, prior wording, decisions, and review history. Record conflicts instead of silently replacing prior conclusions.
+5. For every invariant substantively examined, add one review-history row for this pass showing the agent name and actions such as read, created, modified, challenged, or validated. Add the history table if an older record lacks one. Update `subsystems/INDEX.md` after invariant changes.
+6. Keep the pass file current at phase boundaries. Before stopping, update its status, exact coverage, artifacts changed, unresolved work, and handoff, then synchronize its row in `REVIEW_LOG.md`.
+
+An inventory listing alone is not a substantive read. Agent identity is provenance, not authentication. Never claim that a prior pass reviewed code or semantics beyond its recorded coverage.
+
 ## Conversational onboarding
 
 1. Infer the review goal, target repository, and requested scope from the session.
 2. Inspect source, history, documentation, configuration, dependency metadata, and available specifications.
-3. Populate `PROJECT.md`, `BASELINE.md`, and a draft `THREAT_MODEL.md`. Mark unavailable facts as unknown instead of inventing them.
-4. Derive candidate system, subsystem, and protocol invariants, create their catalog records, and classify each as clear, gray, conflicting, or unknown.
+3. Populate missing project context and update stale context in `PROJECT.md`, `BASELINE.md`, and `THREAT_MODEL.md`. Preserve prior sourced decisions. Mark unavailable facts as unknown instead of inventing them.
+4. Reuse and reassess existing invariant records before deriving missing system, subsystem, or protocol invariants. Classify each as clear, gray, conflicting, or unknown.
 5. Present the system invariants first in short, readable language. Then present subsystem and protocol invariants in manageable batches.
 6. Require the user to verify, correct, reject, dispute, or defer every proposed invariant. Maintain the result in `interviews/VERIFICATION.md`.
 7. For every gray, conflicting, or unknown invariant, ask a concrete scenario question that distinguishes the plausible meanings. Record each answer in `interviews/DECISIONS.md` and update affected records.
@@ -35,6 +48,7 @@ Completing onboarding, threat-model approval, or invariant verification never au
 
 - Pin the target source, dependencies, configuration, build mode, and catalog revision.
 - Create and update the catalog files on the user's behalf throughout the review.
+- Register every agent pass and make its identity, scope, invariant reads, invariant writes, and disposition discoverable from `REVIEW_LOG.md`.
 - Define system, subsystem, and protocol invariants before treating implementation behavior as correct.
 - Investigate specifications and code before asking the user. Actively search each invariant for vague, undefined, disputed, conflicting, or materially unclear semantics. Record answers as scoped decisions, not universal assumptions.
 - Track requirement status separately from enforcement status.
@@ -44,6 +58,7 @@ Completing onboarding, threat-model approval, or invariant verification never au
 - Organize findings by subsystem and invariant, deduplicate by root cause, and sort canonical reports by project-defined priority.
 - Keep severity and confidence separate. Preserve unresolved and disproven hypotheses.
 - Require explicit subsystem selection for each new scan. Never infer `Global scan` from a general request to review the repository.
+- Preserve prior invariant work. Never overwrite, renumber, or regenerate an existing invariant without first reading its history and applicable decisions.
 - Do not publish findings, push changes, or contact third parties without explicit user authorization.
 
 Use files in [templates](templates) when creating catalog entries. Read only the templates needed for the current phase.
@@ -68,4 +83,4 @@ Start a run only after the user selects the scope. If the user selects several s
 
 ## Completion
 
-A review run is complete only when every selected invariant and entry point is accounted for as analyzed, exercised, disproven, unresolved, out of scope, or not examined. Absence of findings is never proof of correctness.
+A review run is complete only when every selected invariant and entry point is accounted for as analyzed, exercised, disproven, unresolved, out of scope, or not examined. An agent pass is complete only when its pass record, overview row, and touched invariant histories are current. Absence of findings is never proof of correctness.

@@ -5,6 +5,7 @@
 - Disposition: reproduced
 - Subsystem and invariant IDs:
 - Originating run:
+- Originating and validating passes and agents:
 - Source and catalog commits:
 - Deployment and attacker prerequisites:
 - Controlled input and complete path:

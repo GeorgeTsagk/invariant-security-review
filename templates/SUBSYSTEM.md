@@ -1,5 +1,13 @@
 # Subsystem name
 
+## Review history
+
+| Pass ID | Agent | Action | Date | Source baseline | Scope or notes |
+| --- | --- | --- | --- | --- | --- |
+| None | | | | | |
+
+## Boundary
+
 - Responsibility and boundary:
 - Packages, services, or protocol components:
 - Protected assets:
