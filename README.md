@@ -24,6 +24,12 @@ The repository is also an installable skill. Its [SKILL.md](SKILL.md) instructs 
 
 Keep the catalog separate from production source and from this skeleton. The agent should use isolated source worktrees for experiments, store reproducible evidence under `runs/`, and promote only validated issues into `findings/`.
 
+Findings have a durable lifecycle: active, resolved, or discarded. Closing a
+finding never deletes its evidence. The agent preserves its historical priority
+and disposition history, verifies fixes dynamically before marking them
+resolved, and records the requirement evidence or human decision before marking
+them discarded.
+
 ## Layout
 
 - `scan/`: gitignored, one subdirectory per target holding the populated copies of the catalog files below.

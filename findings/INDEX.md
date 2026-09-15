@@ -13,3 +13,12 @@ Keep both views synchronized. Link only canonical reports from this directory.
 | Subsystem | Finding | Priority | Invariant IDs | Confidence |
 | --- | --- | --- | --- | --- |
 | None | | | | |
+
+## Resolved and discarded
+
+These records are historical and excluded from active counts and priority
+views.
+
+| Historical priority | Finding | Status | Decision or verification reference |
+| --- | --- | --- | --- |
+| None | | | |

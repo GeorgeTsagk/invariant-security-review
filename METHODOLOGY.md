@@ -115,6 +115,22 @@ Deduplicate by root cause and invariant while preserving affected entry points. 
 
 Use the project's approved priority policy. If none exists, propose one and obtain approval before final triage. Store canonical reports as `P<priority>-<slug>.md` so filesystem order surfaces urgent issues. Also index findings by subsystem and invariant.
 
+Assign every canonical report a lifecycle status. `active` means the reproduced
+behavior is still considered a security issue. `resolved` requires the original
+reproduction to be exercised against a named patched revision with recorded
+regression evidence. `discarded` requires later evidence or an authorized human
+requirement decision showing that the behavior is expected, out of scope,
+duplicated, or not a security violation. A patch proposal, code inspection, or
+remediation preference alone cannot close a finding.
+
+Preserve closed reports as durable review history. Keep the original evidence,
+historical priority, stable report link, and an append-only disposition table
+recording date, pass, agent, previous status, new status, and basis. Remove
+resolved and discarded reports from active priority and subsystem views, but
+list them in a dedicated index section. Reopen a report by adding another
+history row when new evidence or a requirement change restores the violated
+oracle.
+
 Human expert review remains the final quality gate. Confirm the attack path and dynamic evidence before disclosure or remediation. Keep findings private unless the user explicitly authorizes publication.
 
 ## 12. Account for coverage and evaluate the process

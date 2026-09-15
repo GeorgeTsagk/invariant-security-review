@@ -10,6 +10,30 @@ Priority follows demonstrated impact and exposure. Confidence is separate. A cri
 
 Maintain [INDEX.md](INDEX.md) with views grouped by priority and subsystem. Deduplicate by root cause and invariant, while preserving all affected entry points in the canonical report.
 
+## Finding lifecycle
+
+Every canonical report has one status:
+
+- `active`: reproduced and still considered a security issue.
+- `resolved`: a remediation is verified at a named source revision with a
+  regression test or equivalent dynamic evidence.
+- `discarded`: later evidence or an authorized human requirement decision
+  establishes that the behavior is expected, out of scope, duplicated, or not
+  a security violation.
+
+Never delete or rewrite the original evidence when status changes. Add a dated
+disposition-history row with the pass, agent, prior status, new status, and
+basis. Retain the historical priority and stable report link. Exclude resolved
+and discarded records from active priority and subsystem tables, then list them
+in the index's resolved and discarded section. A later decision can reopen a
+record as active with another history row.
+
+Do not mark a finding resolved from a patch description or code inspection
+alone. Exercise the original reproduction against the patched revision and
+record both the revision and regression result. Do not mark a finding discarded
+merely because remediation is undesirable. Record the requirement evidence or
+human decision that invalidates the security oracle.
+
 ## Promotion gate
 
 A canonical finding requires:

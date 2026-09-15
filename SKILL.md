@@ -58,6 +58,8 @@ Completing onboarding, threat-model approval, or invariant verification never au
 - Keep hypotheses separate from findings. Seek counterevidence before reproduction.
 - Promote a hypothesis only after a meaningful dynamic reproduction with a valid control.
 - Organize findings by subsystem and invariant, deduplicate by root cause, and sort canonical reports by project-defined priority.
+- Track every canonical finding as active, resolved, or discarded. Preserve its evidence, historical priority, stable link, and dated disposition history. Exclude inactive records from active counts without deleting them.
+- Mark a finding resolved only after reproducing the original issue against a named patched revision and recording regression evidence. Mark it discarded only when later evidence or an authorized human requirement decision invalidates the security oracle, not because a fix is inconvenient.
 - Keep severity and confidence separate. Preserve unresolved and disproven hypotheses.
 - Require explicit subsystem selection for each new scan. Never infer `Global scan` from a general request to review the repository.
 - Preserve prior invariant work. Never overwrite, renumber, or regenerate an existing invariant without first reading its history and applicable decisions.

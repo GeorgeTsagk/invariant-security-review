@@ -2,7 +2,8 @@
 
 - Priority and project rubric:
 - Confidence:
-- Disposition: reproduced
+- Finding status: active / resolved / discarded
+- Disposition rationale:
 - Subsystem and invariant IDs:
 - Originating run:
 - Originating and validating passes and agents:
@@ -22,3 +23,11 @@
 - Regression evidence, if patched:
 - Human review status:
 - Disclosure status: local only unless explicitly authorized
+
+## Disposition history
+
+Preserve every status transition. Never erase the original evidence or rating.
+
+| Date | Pass and agent | Previous status | New status | Evidence or human decision |
+| --- | --- | --- | --- | --- |
+| None | | | active | Initial promotion after reproduction |
