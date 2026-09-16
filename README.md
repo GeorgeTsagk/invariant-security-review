@@ -10,6 +10,8 @@ Clone or copy this repository, launch a compatible agent CLI from its root, and 
 
 > Review `/path/to/project`, starting with authentication and transaction processing. Interview me wherever the intended security invariants are unclear.
 
+All review data for a target is written under `scan/<project>/`, a gitignored directory, so the repository itself stays a clean skeleton across targets. See [scan/README.md](scan/README.md) for the layout.
+
 The user does not populate catalog files manually. The agent inspects the target source and available specifications, fills in [PROJECT.md](PROJECT.md), [BASELINE.md](BASELINE.md), and [THREAT_MODEL.md](THREAT_MODEL.md), creates subsystem and protocol invariants under [subsystems](subsystems), and maintains all run and finding records.
 
 Every agent registers a durable pass before analysis. [REVIEW_LOG.md](REVIEW_LOG.md) shows who reviewed what, while detailed records under [passes](passes) capture exact scope, invariant reads and writes, evidence, outputs, and handoff. Existing invariants are discovered through [the subsystem index](subsystems/INDEX.md) and retain per-agent review history across passes.
@@ -20,10 +22,11 @@ The agent then stops, ranks all discovered subsystems by review priority, and as
 
 The repository is also an installable skill. Its [SKILL.md](SKILL.md) instructs compatible agents to follow [METHODOLOGY.md](METHODOLOGY.md) and use the included templates.
 
-Keep the catalog separate from production source. The agent should use isolated source worktrees for experiments, store reproducible evidence under `runs/`, and promote only validated issues into `findings/`.
+Keep the catalog separate from production source and from this skeleton. The agent should use isolated source worktrees for experiments, store reproducible evidence under `runs/`, and promote only validated issues into `findings/`.
 
 ## Layout
 
+- `scan/`: gitignored, one subdirectory per target holding the populated copies of the catalog files below.
 - `PROJECT.md`: purpose, architecture, supported deployments, and trust boundaries.
 - `AGENTS.md` and `CLAUDE.md`: automatic agent CLI entrypoints.
 - `BASELINE.md`: pinned source and execution environment.

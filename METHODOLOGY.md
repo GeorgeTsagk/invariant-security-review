@@ -22,7 +22,7 @@ Record the repository's purpose, architecture, deployment profiles, source revis
 
 The agent owns initialization and incremental maintenance. Populate missing records and update stale evidence without discarding prior provenance. Never hand blank templates to the user or require them to edit files. Use explicit unknown markers where evidence is absent.
 
-Keep the catalog separate from source. Use isolated worktrees for experiments. Exclude credentials, production wallets, private customer data, and unrelated repositories.
+Keep the catalog separate from source and from the skeleton. Store all catalog data under `scan/<project>/`, which is gitignored, and leave the root skeleton files blank. Use isolated worktrees for experiments. Exclude credentials, production wallets, private customer data, and unrelated repositories.
 
 ## 2. Synthesize and approve the threat model
 

@@ -9,6 +9,8 @@ metadata:
 
 Use this skill to create or operate a security-review catalog for a target repository.
 
+The repository root holds only the reusable skeleton. Every catalog for a target lives under `scan/<project>/`, which git ignores. On the first pass for a target, create that directory by copying the blank root catalog files (`PROJECT.md`, `BASELINE.md`, `THREAT_MODEL.md`, `REVIEW_LOG.md`, `passes/`, `runs/`, `subsystems/`, `interviews/`, `findings/`). On later passes reuse the existing directory. All file references below such as `PROJECT.md` or `subsystems/INDEX.md` mean the copy under `scan/<project>/`. Templates are read from `templates/` at the root. See `scan/README.md`.
+
 Read [METHODOLOGY.md](METHODOLOGY.md) completely before beginning a review. Preserve its phase gates: threat model, entry-point discovery, context enrichment, hypothesis generation, skeptical validation, dynamic reproduction, risk rating, and human handoff.
 
 The user operates this workflow through conversation. Own catalog initialization and maintenance. Do not instruct the user to fill templates or edit catalog files. If the target repository is not identifiable, ask for its path or URL. Otherwise inspect it and begin.
