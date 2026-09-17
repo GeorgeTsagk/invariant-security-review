@@ -18,6 +18,7 @@
 - Selection date and session reference:
 - Explicitly unselected subsystems:
 - Trusted services and attacker capabilities:
+- Vulnerability eligibility and severity policy reference:
 - Open requirements and decision references:
 - Time or resource budget, if assigned:
 
@@ -35,4 +36,4 @@ Record patches, exact commands, expected and actual outcomes, seeds, valid contr
 
 ## Final disposition
 
-List reproduced findings, disproven and rejected candidates, unresolved questions, out-of-scope paths, and paths not examined. Absence of findings is not proof of correctness.
+List reproduced security findings, product defects rejected by the vulnerability gates, disproven and rejected candidates, unresolved questions, out-of-scope paths, and paths not examined. Absence of findings is not proof of correctness.

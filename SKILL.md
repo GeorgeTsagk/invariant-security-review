@@ -13,6 +13,9 @@ The repository root holds only the reusable skeleton. Every catalog for a target
 
 Read [METHODOLOGY.md](METHODOLOGY.md) completely before beginning a review. Preserve its phase gates: threat model, entry-point discovery, context enrichment, hypothesis generation, skeptical validation, dynamic reproduction, risk rating, and human handoff.
 
+Before deciding whether a reproduced behavior is a vulnerability or assigning
+its severity, read and apply [the vulnerability triage gates](references/VULNERABILITY_TRIAGE.md).
+
 The user operates this workflow through conversation. Own catalog initialization and maintenance. Do not instruct the user to fill templates or edit catalog files. If the target repository is not identifiable, ask for its path or URL. Otherwise inspect it and begin.
 
 ## Pass registration and prior work
@@ -55,9 +58,12 @@ Completing onboarding, threat-model approval, or invariant verification never au
 - Investigate specifications and code before asking the user. Actively search each invariant for vague, undefined, disputed, conflicting, or materially unclear semantics. Record answers as scoped decisions, not universal assumptions.
 - Track requirement status separately from enforcement status.
 - Trace attacker-controlled input through the complete implementation path to a meaningful consequence.
+- Before promotion, name the adversary, compare their capability with and without the defect, isolate the harm prevented by fixing this defect, and establish realistic supported-deployment reachability.
+- Reject security framing for ordinary operation, documented tradeoffs, already-equivalent actor capabilities, implausible configurations, non-sensitive observations, and unmeasured low-impact resource claims. Preserve any narrower residual defect and ordinary product issue.
 - Keep hypotheses separate from findings. Seek counterevidence before reproduction.
 - Promote a hypothesis only after a meaningful dynamic reproduction with a valid control.
 - Organize findings by subsystem and invariant, deduplicate by root cause, and sort canonical reports by project-defined priority.
+- Score impact, attack vector, exploitability, and cross-victim amplification separately under the approved project policy. Do not let one defect inherit impact or reachability from another defect on the same causal chain.
 - Track every canonical finding as active, resolved, or discarded. Preserve its evidence, historical priority, stable link, and dated disposition history. Exclude inactive records from active counts without deleting them.
 - Mark a finding resolved only after reproducing the original issue against a named patched revision and recording regression evidence. Mark it discarded only when later evidence or an authorized human requirement decision invalidates the security oracle, not because a fix is inconvenient.
 - Keep severity and confidence separate. Preserve unresolved and disproven hypotheses.

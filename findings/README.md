@@ -8,6 +8,8 @@ Store reports as `P<priority>-<concrete-behavior>.md`. Lower priority numbers so
 
 Priority follows demonstrated impact and exposure. Confidence is separate. A critical-looking pattern with uncertain reachability is not automatically high priority.
 
+Before triage, apply [the vulnerability eligibility and severity gates](../references/VULNERABILITY_TRIAGE.md).
+
 Maintain [INDEX.md](INDEX.md) with views grouped by priority and subsystem. Deduplicate by root cause and invariant, while preserving all affected entry points in the canonical report.
 
 ## Finding lifecycle
@@ -39,13 +41,20 @@ human decision that invalidates the security oracle.
 A canonical finding requires:
 
 - A justified invariant or normative requirement.
+- A named untrusted actor who gains a capability they did not already possess.
+- Harm attributable to this defect rather than ordinary operation, operator
+  choice, or another prerequisite defect.
 - Realistic attacker prerequisites and reachability.
 - A complete source path to a meaningful consequence.
 - Counterevidence review.
 - Dynamic reproduction with a valid control.
 - Exact revisions, configuration, commands, and limitations.
+- Impact, Attack Vector, Exploitability, and Cross-victim Amplification scores
+  under the approved project policy.
 - Human expert review before disclosure.
 
 Unresolved and disproven hypotheses remain in their originating run, not here.
+Actionable behaviors that fail the security gates remain ordinary product
+issues and are not promoted into the canonical security index.
 
 Keep findings private. Do not publish, push, comment, or disclose without explicit authorization.

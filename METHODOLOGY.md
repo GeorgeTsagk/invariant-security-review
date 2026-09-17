@@ -2,7 +2,7 @@
 
 ## Provenance
 
-This framework adapts the phase separation, human context injection, skeptical validation, dynamic reproduction, and benchmarking practices described by Mandiant in Google Cloud's [Staying Ahead of Adversarial AI Through Agentic Source Code Review](https://cloud.google.com/blog/topics/threat-intelligence/staying-ahead-of-adversarial-ai-through-agentic-source-code-review/). It adds explicit invariant catalogs and durable finding records. It is an independent adaptation, not Google or Mandiant's internal harness.
+This framework adapts the phase separation, human context injection, skeptical validation, dynamic reproduction, and benchmarking practices described by Mandiant in Google Cloud's [Staying Ahead of Adversarial AI Through Agentic Source Code Review](https://cloud.google.com/blog/topics/threat-intelligence/staying-ahead-of-adversarial-ai-through-agentic-source-code-review/). Its vulnerability eligibility and severity gates adapt Lightning Labs' [Severity Taxonomy](https://security.lightning.engineering/severity/). It adds explicit invariant catalogs and durable finding records. It is an independent adaptation, not either organization's internal process.
 
 The phases are sequential quality gates. Agents may work in parallel within a phase when authorized, but parallel opinions never replace evidence.
 
@@ -26,7 +26,7 @@ Keep the catalog separate from source and from the skeleton. Store all catalog d
 
 ## 2. Synthesize and approve the threat model
 
-Identify protected assets, attacker capabilities, trust boundaries, privileged actors, externally controlled inputs, consequential sinks, security assumptions, and explicitly excluded threats. Distinguish attacker data relayed by a trusted service from compromise of that service.
+Identify protected assets, attacker capabilities, trust boundaries, privileged actors, externally controlled inputs, consequential sinks, security assumptions, and explicitly excluded threats. For each actor, record their supported baseline capabilities so later review can distinguish a real escalation from another route to an authority they already hold. Distinguish the author of attacker data relayed by a trusted service from compromise of that service. Record supported and default deployment exposure separately from operator-created exposure.
 
 Present the synthesized model and scope to the human reviewer before broad analysis. Record approval, corrections, and open assumptions. Prior explicit approval may satisfy this gate. Do not silently broaden authority or deployment scope.
 
@@ -86,11 +86,30 @@ Follow multi-hop paths. A missing check in one helper is not a finding if anothe
 
 Brainstorm concrete invariant failures with limited self-filtering. Cover access control, data-flow sinks, identity binding, parser differentials, arithmetic boundaries, replay, concurrency, partial writes, cancellation, restart, reorg, downgrade, resource exhaustion, and inconsistent consumer assumptions.
 
-Each hypothesis records attacker, controlled input, preconditions, complete candidate path, violated invariant, expected consequence, confidence, and the next falsifying experiment. Apply a documented confidence filter to prioritize validation without deleting low-confidence coverage records.
+Each hypothesis records attacker, baseline capability, claimed capability increase, controlled input, supported-deployment preconditions, complete candidate path, violated invariant, harm attributable to this defect, expected consequence, confidence, and the next falsifying experiment. Apply a documented confidence filter to prioritize validation without deleting low-confidence coverage records.
 
 ## 9. Validate skeptically
 
 Use a fresh validation pass to search for counterevidence: earlier and later checks, unreachable states, privilege restrictions, dependency guarantees, legitimate exceptions, alternate paths, and compensating recovery.
+
+Apply [the vulnerability triage gates](references/VULNERABILITY_TRIAGE.md)
+before reproduction or promotion:
+
+1. Name the untrusted author of the input and reject cases where that actor
+   already has an equivalent supported capability to cause the impact.
+2. Isolate the outcome that fixing this defect alone would prevent. Do not
+   inherit harm or reachability from another required defect.
+3. Exclude ordinary economic behavior, documented tradeoffs, unsupported
+   operator exposure, non-sensitive observations, and correctness issues with
+   no security, liveness, or realistic denial-of-service consequence.
+4. Establish supported and default deployment reachability, attacker cost,
+   trigger observability, prevalence, persistence, and recovery.
+5. Check whether the reviewed baseline already contains a public fix or the
+   case duplicates an existing canonical finding.
+
+If the original framing fails but a narrower residual remains, create or update
+a separate hypothesis for that residual. Preserve rejected security candidates
+as product defects when they remain actionable.
 
 Classify each hypothesis as:
 
@@ -103,7 +122,7 @@ When independent reviewers or agents are authorized, give them clean evidence pa
 
 ## 10. Reproduce dynamically
 
-Begin with the smallest meaningful test, then cross the real boundary when reachability, configuration, persistence, or external effects matter. Use a valid control and an adversarial case. Assert the violated consequence, not merely a suspicious return value.
+Begin with the smallest meaningful test, then cross the real boundary when reachability, configuration, persistence, or external effects matter. Use a valid control and an adversarial case. Assert the defect-owned consequence, not merely a suspicious return value or harm caused by another prerequisite defect. Resource findings require a measured workload and realistic budget.
 
 A regression-style reproduction should fail against the vulnerable revision and pass after a requested fix. A diagnostic proof of concept may instead pass by demonstrating the bad outcome; label the convention.
 
@@ -113,7 +132,15 @@ Record source revisions, environment, commands, inputs, seeds, expected and actu
 
 Deduplicate by root cause and invariant while preserving affected entry points. Rate priority from demonstrated impact, reachability, attacker prerequisites, scale, and recovery. Track confidence separately.
 
-Use the project's approved priority policy. If none exists, propose one and obtain approval before final triage. Store canonical reports as `P<priority>-<slug>.md` so filesystem order surfaces urgent issues. Also index findings by subsystem and invariant.
+Use the project's approved priority policy. If none exists, propose the default
+model in [the vulnerability triage reference](references/VULNERABILITY_TRIAGE.md)
+and obtain approval before final triage. Score the defect's own Impact, Attack
+Vector, Exploitability, and Cross-victim Amplification independently. Apply the
+low-severity exit defined by the approved policy before promotion. Check the
+mechanical result against a plain-language tier anchor and record any human
+override with its rationale. Store canonical reports as
+`P<priority>-<slug>.md` so filesystem order surfaces urgent issues. Also index
+findings by subsystem and invariant.
 
 Assign every canonical report a lifecycle status. `active` means the reproduced
 behavior is still considered a security issue. `resolved` requires the original
@@ -135,6 +162,6 @@ Human expert review remains the final quality gate. Confirm the attack path and 
 
 ## 12. Account for coverage and evaluate the process
 
-A run must account for every selected invariant and entry point as analyzed, exercised, disproven, rejected, unresolved, out of scope, or not examined. State gaps and decisions still needed. Every participating pass must be linked with its agent identity and exact contribution. No findings is not a correctness guarantee.
+A run must account for every selected invariant and entry point as analyzed, exercised, disproven, rejected, unresolved, out of scope, or not examined. Distinguish promoted security findings from ordinary product defects that failed the vulnerability gates. State gaps and decisions still needed. Every participating pass must be linked with its agent identity and exact contribution. No findings is not a correctness guarantee.
 
 Evaluate the workflow on held-out synthetic or reviewed seeded defects where possible. Measure detection, false positives, duplicate rate, unresolved rate, coverage, reproduction success, and cost. Prevent benchmark details from leaking into discovery prompts.

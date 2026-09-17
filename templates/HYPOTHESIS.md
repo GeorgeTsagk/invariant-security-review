@@ -4,14 +4,22 @@
 - Validation passes and agents:
 - Status: generated / validating / ready for reproduction / disproven / rejected / unresolved / promoted
 - Subsystem and invariant IDs:
-- Attacker and prerequisites:
+- Adversary and who authored the input:
+- Actor's baseline supported capabilities:
+- Capability gained only because of the defect:
+- Supported deployment, default exposure, and prerequisites:
 - Controlled input:
 - Complete candidate path:
-- Expected security consequence:
+- Harm prevented by fixing this defect alone:
+- Expected security consequence or narrower residual defect:
+- Ordinary behavior, documented tradeoff, or operator-exposure check:
+- Duplicate and already-fixed check at the reviewed baseline:
+- Provisional Impact / Vector / Exploitability / Amplification:
 - Confidence and reason:
 - Earlier and later controls checked:
 - Counterevidence and competing explanations:
 - Falsifying experiment:
 - Dynamic result and valid control:
 - Disposition rationale:
+- Product-issue reference if rejected by the security gates:
 - Canonical finding link, if promoted:

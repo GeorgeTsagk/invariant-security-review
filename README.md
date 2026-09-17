@@ -2,7 +2,7 @@
 
 A repository skeleton and agent skill for evidence-backed source-code security review. It guides agents from threat modeling and invariant definition through reproduction, prioritization, and durable finding tracking.
 
-This methodology adapts the sequential review architecture described by Mandiant in Google Cloud's [Staying Ahead of Adversarial AI Through Agentic Source Code Review](https://cloud.google.com/blog/topics/threat-intelligence/staying-ahead-of-adversarial-ai-through-agentic-source-code-review/). This repository is an independent implementation and is not a Google or Mandiant product.
+This methodology adapts the sequential review architecture described by Mandiant in Google Cloud's [Staying Ahead of Adversarial AI Through Agentic Source Code Review](https://cloud.google.com/blog/topics/threat-intelligence/staying-ahead-of-adversarial-ai-through-agentic-source-code-review/) and vulnerability triage concepts from Lightning Labs' [Severity Taxonomy](https://security.lightning.engineering/severity/). This repository is an independent implementation and is not either organization's product.
 
 ## Use
 
@@ -30,6 +30,13 @@ and disposition history, verifies fixes dynamically before marking them
 resolved, and records the requirement evidence or human decision before marking
 them discarded.
 
+Before promotion, the agent tests whether an untrusted actor actually gains a
+new capability, whether the defect itself owns the claimed harm, and whether
+the trigger is realistic in a supported deployment. Eligible findings score
+Impact, Attack Vector, Exploitability, and Cross-victim Amplification
+separately. Low-impact cases without practical reach or amplification remain
+ordinary product issues rather than inflated security reports.
+
 ## Layout
 
 - `scan/`: gitignored, one subdirectory per target holding the populated copies of the catalog files below.
@@ -43,6 +50,7 @@ them discarded.
 - `interviews/`: unresolved questions and scoped human decisions.
 - `runs/`: scan manifests, hypotheses, experiments, and logs.
 - `findings/`: canonical priority-sorted findings.
+- `references/`: reusable vulnerability eligibility and severity guidance.
 - `templates/`: reusable records for each phase.
 
 Define the project's priority levels with
