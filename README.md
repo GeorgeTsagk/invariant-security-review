@@ -2,7 +2,12 @@
 
 A repository skeleton and agent skill for evidence-backed source-code security review. It guides agents from threat modeling and invariant definition through reproduction, prioritization, and durable finding tracking.
 
-This methodology adapts the sequential review architecture described by Mandiant in Google Cloud's [Staying Ahead of Adversarial AI Through Agentic Source Code Review](https://cloud.google.com/blog/topics/threat-intelligence/staying-ahead-of-adversarial-ai-through-agentic-source-code-review/) and vulnerability triage concepts from Lightning Labs' [Severity Taxonomy](https://security.lightning.engineering/severity/). This repository is an independent implementation and is not either organization's product.
+## Methodology credits
+
+- Agentic review architecture: Mandiant and Google Cloud's [Staying Ahead of Adversarial AI Through Agentic Source Code Review](https://cloud.google.com/blog/topics/threat-intelligence/staying-ahead-of-adversarial-ai-through-agentic-source-code-review/).
+- Vulnerability eligibility and severity triage: Lightning Labs' [Severity Taxonomy](https://security.lightning.engineering/severity/).
+
+This repository independently adapts these methodologies and is not a product of either organization.
 
 ## Use
 
