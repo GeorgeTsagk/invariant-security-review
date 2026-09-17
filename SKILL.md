@@ -1,6 +1,6 @@
 ---
 name: invariant-security-review
-description: Conduct invariant-driven source-code security reviews, from threat modeling and subsystem interviews through hypothesis validation, reproduction, and priority-organized finding tracking. Use for deep repository security scans, security invariant catalogs, or structured vulnerability review programs.
+description: Conduct invariant-driven source-code security reviews, from threat modeling and subsystem interviews through hypothesis validation, reproduction, and T0-through-T3 finding tracking. Use for deep repository security scans, security invariant catalogs, or structured vulnerability review programs.
 metadata:
   short-description: Invariant-driven source security reviews
 ---
@@ -62,9 +62,9 @@ Completing onboarding, threat-model approval, or invariant verification never au
 - Reject security framing for ordinary operation, documented tradeoffs, already-equivalent actor capabilities, implausible configurations, non-sensitive observations, and unmeasured low-impact resource claims. Preserve any narrower residual defect and ordinary product issue.
 - Keep hypotheses separate from findings. Seek counterevidence before reproduction.
 - Promote a hypothesis only after a meaningful dynamic reproduction with a valid control.
-- Organize findings by subsystem and invariant, deduplicate by root cause, and sort canonical reports by project-defined priority.
-- Score impact, attack vector, exploitability, and cross-victim amplification separately under the approved project policy. Do not let one defect inherit impact or reachability from another defect on the same causal chain.
-- Track every canonical finding as active, resolved, or discarded. Preserve its evidence, historical priority, stable link, and dated disposition history. Exclude inactive records from active counts without deleting them.
+- Organize findings by subsystem and invariant, deduplicate by root cause, and sort canonical reports by severity from T0 through T3.
+- Record Severity, Attack Vector, Exploitability, Impact, and Virality using the approved project policy and the T0 through T3 anchors. Do not let one defect inherit impact or reachability from another defect on the same causal chain.
+- Track every canonical finding as active, resolved, or discarded. Preserve its evidence, historical severity, stable link, and dated disposition history. Exclude inactive records from active counts without deleting them.
 - Mark a finding resolved only after reproducing the original issue against a named patched revision and recording regression evidence. Mark it discarded only when later evidence or an authorized human requirement decision invalidates the security oracle, not because a fix is inconvenient.
 - Keep severity and confidence separate. Preserve unresolved and disproven hypotheses.
 - Require explicit subsystem selection for each new scan. Never infer `Global scan` from a general request to review the repository.

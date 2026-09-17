@@ -1,6 +1,14 @@
-# P<priority>: Concrete violated behavior
+# <severity>: Concrete violated behavior
 
-- Priority and project rubric:
+- Severity: T0 / T1 / T2 / T3
+- Plain-language tier anchor:
+- Mechanical tier calculation:
+- Attack Vector: Local / Adjacent / Network
+- Exploitability: Low / Med / High
+- Impact: Low / Med / High
+- Virality: Low / Med / High
+- Human override of mechanical tier, if any:
+- Severity policy and decision reference:
 - Confidence:
 - Finding status: active / resolved / discarded
 - Disposition rationale:
@@ -17,13 +25,7 @@
 - Expected behavior:
 - Actual behavior and demonstrated impact:
 - Harm prevented by fixing this defect alone:
-- Impact: Low / Medium / High, with persistence and scale rationale
-- Attack Vector: Local / Adjacent / Network
-- Exploitability: Low / Medium / High, scored against the affected population
-- Cross-victim Amplification: Low / Medium / High
-- Severity tier and plain-language anchor:
 - Low-severity exit result:
-- Human override of mechanical tier, if any:
 - Reproduction patch, command, configuration, and logs:
 - Valid control and test convention:
 - Persistent, restart, or external effects:

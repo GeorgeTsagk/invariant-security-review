@@ -4,13 +4,18 @@ This directory is the canonical store for evidence-backed findings. Run director
 
 ## Naming and ordering
 
-Store reports as `P<priority>-<concrete-behavior>.md`. Lower priority numbers sort first. The project must define and approve what each level means for its assets and threat model using [the priority policy template](../templates/PRIORITY_POLICY.md).
+Store reports as `<severity>-<concrete-behavior>.md`, where severity is `T0`,
+`T1`, `T2`, or `T3`. T0 sorts first. Define and approve any project-specific
+interpretation using [the severity policy template](../templates/SEVERITY_POLICY.md),
+without changing the tier anchors.
 
-Priority follows demonstrated impact and exposure. Confidence is separate. A critical-looking pattern with uncertain reachability is not automatically high priority.
+Severity follows the plain-language tier anchor and the four taxonomy
+dimensions. Confidence is separate. Uncertain reachability does not by itself
+justify a more severe tier.
 
 Before triage, apply [the vulnerability eligibility and severity gates](../references/VULNERABILITY_TRIAGE.md).
 
-Maintain [INDEX.md](INDEX.md) with views grouped by priority and subsystem. Deduplicate by root cause and invariant, while preserving all affected entry points in the canonical report.
+Maintain [INDEX.md](INDEX.md) with views grouped by severity and subsystem. Deduplicate by root cause and invariant, while preserving all affected entry points in the canonical report.
 
 ## Finding lifecycle
 
@@ -25,8 +30,8 @@ Every canonical report has one status:
 
 Never delete or rewrite the original evidence when status changes. Add a dated
 disposition-history row with the pass, agent, prior status, new status, and
-basis. Retain the historical priority and stable report link. Exclude resolved
-and discarded records from active priority and subsystem tables, then list them
+basis. Retain the historical severity and stable report link. Exclude resolved
+and discarded records from active severity and subsystem tables, then list them
 in the index's resolved and discarded section. A later decision can reopen a
 record as active with another history row.
 
@@ -49,7 +54,7 @@ A canonical finding requires:
 - Counterevidence review.
 - Dynamic reproduction with a valid control.
 - Exact revisions, configuration, commands, and limitations.
-- Impact, Attack Vector, Exploitability, and Cross-victim Amplification scores
+- Severity, Attack Vector, Exploitability, Impact, and Virality fields
   under the approved project policy.
 - Human expert review before disclosure.
 

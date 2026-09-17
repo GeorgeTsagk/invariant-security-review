@@ -30,7 +30,7 @@ The repository is also an installable skill. Its [SKILL.md](SKILL.md) instructs 
 Keep the catalog separate from production source and from this skeleton. The agent should use isolated source worktrees for experiments, store reproducible evidence under `runs/`, and promote only validated issues into `findings/`.
 
 Findings have a durable lifecycle: active, resolved, or discarded. Closing a
-finding never deletes its evidence. The agent preserves its historical priority
+finding never deletes its evidence. The agent preserves its historical severity
 and disposition history, verifies fixes dynamically before marking them
 resolved, and records the requirement evidence or human decision before marking
 them discarded.
@@ -38,9 +38,9 @@ them discarded.
 Before promotion, the agent tests whether an untrusted actor actually gains a
 new capability, whether the defect itself owns the claimed harm, and whether
 the trigger is realistic in a supported deployment. Eligible findings score
-Impact, Attack Vector, Exploitability, and Cross-victim Amplification
-separately. Low-impact cases without practical reach or amplification remain
-ordinary product issues rather than inflated security reports.
+Attack Vector, Exploitability, Impact, and Virality separately, then classify
+eligible findings as T0 through T3. Low-impact cases without practical reach or
+virality remain ordinary product issues rather than inflated security reports.
 
 ## Layout
 
@@ -54,10 +54,10 @@ ordinary product issues rather than inflated security reports.
 - `subsystems/`: system, subsystem, and protocol invariants.
 - `interviews/`: unresolved questions and scoped human decisions.
 - `runs/`: scan manifests, hypotheses, experiments, and logs.
-- `findings/`: canonical priority-sorted findings.
+- `findings/`: canonical severity-sorted findings.
 - `references/`: reusable vulnerability eligibility and severity guidance.
 - `templates/`: reusable records for each phase.
 
-Define the project's priority levels with
-[the priority policy template](templates/PRIORITY_POLICY.md). Maintain both
-priority and subsystem views in [the findings index](findings/INDEX.md).
+Define the project's T0 through T3 interpretation with
+[the severity policy template](templates/SEVERITY_POLICY.md). Maintain both
+severity and subsystem views in [the findings index](findings/INDEX.md).

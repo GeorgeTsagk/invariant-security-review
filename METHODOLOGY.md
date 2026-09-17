@@ -130,17 +130,20 @@ Record source revisions, environment, commands, inputs, seeds, expected and actu
 
 ## 11. Deduplicate, prioritize, and hand off
 
-Deduplicate by root cause and invariant while preserving affected entry points. Rate priority from demonstrated impact, reachability, attacker prerequisites, scale, and recovery. Track confidence separately.
+Deduplicate by root cause and invariant while preserving affected entry points.
+Classify severity with the T0 through T3 anchors and rules. Track confidence
+separately.
 
-Use the project's approved priority policy. If none exists, propose the default
-model in [the vulnerability triage reference](references/VULNERABILITY_TRIAGE.md)
-and obtain approval before final triage. Score the defect's own Impact, Attack
-Vector, Exploitability, and Cross-victim Amplification independently. Apply the
-low-severity exit defined by the approved policy before promotion. Check the
-mechanical result against a plain-language tier anchor and record any human
-override with its rationale. Store canonical reports as
-`P<priority>-<slug>.md` so filesystem order surfaces urgent issues. Also index
-findings by subsystem and invariant.
+Use the project's approved severity policy. If none exists, propose the model
+in [the vulnerability triage reference](references/VULNERABILITY_TRIAGE.md)
+and obtain approval before final triage. First state the plain-language T0 to
+T3 anchor. Then score the defect's own Attack Vector, Exploitability, Impact,
+and Virality independently and calculate the tier. Apply the low-severity exit
+defined by the approved policy before promotion. If arithmetic conflicts with
+the anchor, revisit the inputs and record any human override with its rationale.
+Store canonical reports as `<severity>-<slug>.md`, with severity set to T0,
+T1, T2, or T3, so filesystem order surfaces urgent issues. Also index findings
+by subsystem and invariant.
 
 Assign every canonical report a lifecycle status. `active` means the reproduced
 behavior is still considered a security issue. `resolved` requires the original
@@ -151,9 +154,9 @@ duplicated, or not a security violation. A patch proposal, code inspection, or
 remediation preference alone cannot close a finding.
 
 Preserve closed reports as durable review history. Keep the original evidence,
-historical priority, stable report link, and an append-only disposition table
+historical severity, stable report link, and an append-only disposition table
 recording date, pass, agent, previous status, new status, and basis. Remove
-resolved and discarded reports from active priority and subsystem views, but
+resolved and discarded reports from active severity and subsystem views, but
 list them in a dedicated index section. Reopen a report by adding another
 history row when new evidence or a requirement change restores the violated
 oracle.

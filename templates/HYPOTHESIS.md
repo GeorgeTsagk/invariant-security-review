@@ -14,7 +14,8 @@
 - Expected security consequence or narrower residual defect:
 - Ordinary behavior, documented tradeoff, or operator-exposure check:
 - Duplicate and already-fixed check at the reviewed baseline:
-- Provisional Impact / Vector / Exploitability / Amplification:
+- Provisional Severity anchor: T0 / T1 / T2 / T3 / exits taxonomy
+- Provisional Attack Vector / Exploitability / Impact / Virality:
 - Confidence and reason:
 - Earlier and later controls checked:
 - Counterevidence and competing explanations:
