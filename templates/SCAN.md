@@ -4,7 +4,7 @@
 
 - Date and run ID:
 - Participating pass IDs and agent names:
-- Source repository and commit:
+- Source repository, full commit, branch or tag, and tree hash:
 - Catalog commit:
 - Toolchain, dependencies, and replacements:
 - Build tags and binary provenance:
@@ -32,7 +32,10 @@ Link candidates in `hypotheses.md`. Keep generated, disproven, rejected, unresol
 
 ## Experiments
 
-Record patches, exact commands, expected and actual outcomes, seeds, valid controls, logs, persistent effects, and environment limitations.
+Record patches, exact commands, expected and actual outcomes, seeds, valid
+controls, logs, persistent effects, and environment limitations. For every
+proof, state what it establishes, what it does not establish, and which boundary
+it exercises.
 
 ## Final disposition
 

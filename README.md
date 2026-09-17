@@ -6,6 +6,7 @@ A repository skeleton and agent skill for evidence-backed source-code security r
 
 - Agentic review architecture: Mandiant and Google Cloud's [Staying Ahead of Adversarial AI Through Agentic Source Code Review](https://cloud.google.com/blog/topics/threat-intelligence/staying-ahead-of-adversarial-ai-through-agentic-source-code-review/).
 - Vulnerability eligibility and severity triage: Lightning Labs' [Severity Taxonomy](https://security.lightning.engineering/severity/).
+- Finding construction and code anchoring: [senior security-engineering reporting guidance](references/REPORTING.md).
 
 This repository independently adapts these methodologies and is not a product of either organization.
 
@@ -55,7 +56,7 @@ virality remain ordinary product issues rather than inflated security reports.
 - `interviews/`: unresolved questions and scoped human decisions.
 - `runs/`: scan manifests, hypotheses, experiments, and logs.
 - `findings/`: canonical severity-sorted findings.
-- `references/`: reusable vulnerability eligibility and severity guidance.
+- `references/`: vulnerability triage and mandatory reporting guidance.
 - `templates/`: reusable records for each phase.
 
 Define the project's T0 through T3 interpretation with

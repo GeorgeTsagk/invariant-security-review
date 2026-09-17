@@ -1,6 +1,10 @@
 # Review baseline
 
-- Source repository and commit:
+- Source repository:
+- Full commit:
+- Branch or tag:
+- Tree hash:
+- Baseline date:
 - Catalog commit:
 - Dependency revisions and replacements:
 - Toolchain:

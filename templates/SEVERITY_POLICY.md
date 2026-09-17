@@ -75,3 +75,5 @@
 - Reassessment triggers:
 
 Confidence records evidence quality and remains separate from severity.
+Reporter-provided severity and scale are immutable provenance and remain
+separate from this triage classification.

@@ -1,4 +1,12 @@
-# <severity>: Concrete violated behavior
+# <triage-severity>: Concrete violated behavior
+
+Target: `<repository> @ <full-commit> (<branch-or-tag>)` | Tree: `<tree-hash-or-unavailable>` | Date: `<YYYY-MM-DD>`
+
+- Finding revision override, only if different from Target:
+- Reporter-provided severity, scale, and rationale:
+- Reporting pass and agent:
+
+## Triage classification
 
 - Severity: T0 / T1 / T2 / T3
 - Plain-language tier anchor:
@@ -10,13 +18,29 @@
 - Human override of mechanical tier, if any:
 - Severity policy and decision reference:
 - Confidence:
+- Vulnerability eligibility decision and gate evidence:
+- Low-severity exit result:
+
+The triage classification never replaces the reporter-provided severity.
+
+## Code anchors
+
+Use repository-relative paths and one contiguous range per row. The first row
+must locate the defect itself. For an omission, cite where the missing behavior
+belongs. Name a dependency or external repository explicitly.
+
+| Order | Repository | File | Line start | Line end | What this establishes |
+| --- | --- | --- | --- | --- | --- |
+| 1 | target | path/to/file | | | Defect location |
+
+## Finding
+
 - Finding status: active / resolved / discarded
 - Disposition rationale:
-- Vulnerability eligibility decision and gate evidence:
 - Subsystem and invariant IDs:
 - Originating run:
 - Originating and validating passes and agents:
-- Source and catalog commits:
+- Catalog commit:
 - Deployment and attacker prerequisites:
 - Adversary, input authorship, and baseline capability:
 - Capability increase caused by the defect:
@@ -25,14 +49,22 @@
 - Expected behavior:
 - Actual behavior and demonstrated impact:
 - Harm prevented by fixing this defect alone:
-- Low-severity exit result:
-- Reproduction patch, command, configuration, and logs:
+- Root cause and affected entry points:
+- Related findings and shared mechanism:
+
+## Proof and limitations
+
+- Proof artifact, command, configuration, and revision:
+- What the proof directly establishes:
+- What the proof does not establish:
+- Real boundary exercised:
 - Valid control and test convention:
 - Persistent, restart, or external effects:
 - Counterevidence, uncertainty, and coverage limits:
-- Root cause and affected entry points:
-- Duplicate or related finding links:
-- Shared causal-chain findings and separated impact:
+- Code snippets, optional:
+
+## Handoff
+
 - Remediation, only if requested:
 - Regression evidence, if patched:
 - Human review status:

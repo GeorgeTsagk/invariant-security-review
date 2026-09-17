@@ -14,8 +14,23 @@ dimensions. Confidence is separate. Uncertain reachability does not by itself
 justify a more severe tier.
 
 Before triage, apply [the vulnerability eligibility and severity gates](../references/VULNERABILITY_TRIAGE.md).
+Before promotion or export, strictly apply [the security reporting policy](../references/REPORTING.md).
 
-Maintain [INDEX.md](INDEX.md) with views grouped by severity and subsystem. Deduplicate by root cause and invariant, while preserving all affected entry points in the canonical report.
+Maintain [INDEX.md](INDEX.md) with views grouped by severity and subsystem.
+Keep one independently fixable defect per canonical report. Merge only duplicate
+descriptions of the same defect and remediation point. Findings that share a
+root cause but require separate fixes remain separate and link each other.
+
+Pin the target repository, full commit, optional branch or tag, tree hash when
+available, and date at the top of each report. Every finding requires at least
+one verified repository-relative code anchor. Use one contiguous line range per
+anchor, list the defect first, and identify external repositories explicitly.
+For omissions, cite the code location where the missing behavior belongs.
+
+Preserve reporter-provided severity and scale separately from the independent
+T0 through T3 triage classification. Every proof states what it establishes,
+what it does not establish, and which boundary it exercises. Pasted code is
+optional and never substitutes for anchors at the pinned revision.
 
 ## Finding lifecycle
 
@@ -54,6 +69,11 @@ A canonical finding requires:
 - Counterevidence review.
 - Dynamic reproduction with a valid control.
 - Exact revisions, configuration, commands, and limitations.
+- At least one verified code anchor with repository, repository-relative path,
+  line start, line end, and evidentiary purpose.
+- A proof-scope statement covering what the proof establishes, does not
+  establish, and exercises.
+- The reporter-provided severity and scale preserved separately.
 - Severity, Attack Vector, Exploitability, Impact, and Virality fields
   under the approved project policy.
 - Human expert review before disclosure.

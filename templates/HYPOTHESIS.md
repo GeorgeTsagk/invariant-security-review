@@ -3,6 +3,7 @@
 - Originating pass and agent:
 - Validation passes and agents:
 - Status: generated / validating / ready for reproduction / disproven / rejected / unresolved / promoted
+- Target repository, full commit, and tree hash:
 - Subsystem and invariant IDs:
 - Adversary and who authored the input:
 - Actor's baseline supported capabilities:
@@ -10,6 +11,9 @@
 - Supported deployment, default exposure, and prerequisites:
 - Controlled input:
 - Complete candidate path:
+- Candidate defect anchor: repository, repository-relative file, line start,
+  line end, and what it establishes
+- Additional anchors, one contiguous range each and in evidentiary order:
 - Harm prevented by fixing this defect alone:
 - Expected security consequence or narrower residual defect:
 - Ordinary behavior, documented tradeoff, or operator-exposure check:
@@ -21,6 +25,10 @@
 - Counterevidence and competing explanations:
 - Falsifying experiment:
 - Dynamic result and valid control:
+- What the proof establishes:
+- What the proof does not establish:
+- Boundary exercised by the proof:
 - Disposition rationale:
+- Reporter-provided severity, scale, and rationale, preserved on promotion:
 - Product-issue reference if rejected by the security gates:
 - Canonical finding link, if promoted:

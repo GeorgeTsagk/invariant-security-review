@@ -2,7 +2,7 @@
 
 ## Provenance
 
-This framework adapts the phase separation, human context injection, skeptical validation, dynamic reproduction, and benchmarking practices described by Mandiant in Google Cloud's [Staying Ahead of Adversarial AI Through Agentic Source Code Review](https://cloud.google.com/blog/topics/threat-intelligence/staying-ahead-of-adversarial-ai-through-agentic-source-code-review/). Its vulnerability eligibility and severity gates adapt Lightning Labs' [Severity Taxonomy](https://security.lightning.engineering/severity/). It adds explicit invariant catalogs and durable finding records. It is an independent adaptation, not either organization's internal process.
+This framework adapts the phase separation, human context injection, skeptical validation, dynamic reproduction, and benchmarking practices described by Mandiant in Google Cloud's [Staying Ahead of Adversarial AI Through Agentic Source Code Review](https://cloud.google.com/blog/topics/threat-intelligence/staying-ahead-of-adversarial-ai-through-agentic-source-code-review/). Its vulnerability eligibility and severity gates adapt Lightning Labs' [Severity Taxonomy](https://security.lightning.engineering/severity/). Its report construction follows [the security reporting policy](references/REPORTING.md), which incorporates senior security-engineering guidance. It adds explicit invariant catalogs and durable finding records. It is an independent adaptation, not either organization's internal process.
 
 The phases are sequential quality gates. Agents may work in parallel within a phase when authorized, but parallel opinions never replace evidence.
 
@@ -126,13 +126,16 @@ Begin with the smallest meaningful test, then cross the real boundary when reach
 
 A regression-style reproduction should fail against the vulnerable revision and pass after a requested fix. A diagnostic proof of concept may instead pass by demonstrating the bad outcome; label the convention.
 
-Record source revisions, environment, commands, inputs, seeds, expected and actual outcomes, persistent state, logs, and limitations. Resource findings require measured workloads and budgets. Model reasoning alone is never reproduced evidence.
+Record source revisions, environment, commands, inputs, seeds, expected and actual outcomes, persistent state, logs, and limitations. For every proof, state what it directly establishes, what it does not establish, and which real boundary it exercises. Resource findings require measured workloads and budgets. Model reasoning alone is never reproduced evidence.
 
 ## 11. Deduplicate, prioritize, and hand off
 
-Deduplicate by root cause and invariant while preserving affected entry points.
-Classify severity with the T0 through T3 anchors and rules. Track confidence
-separately.
+Read and apply [the security reporting policy](references/REPORTING.md).
+Keep one independently fixable defect per finding. Merge only duplicate
+descriptions of the same defect and remediation point. Defects sharing a root
+cause remain separate when they require separate fixes; link them as related
+findings. Classify severity with the T0 through T3 anchors and rules. Track
+confidence separately.
 
 Use the project's approved severity policy. If none exists, propose the model
 in [the vulnerability triage reference](references/VULNERABILITY_TRIAGE.md)
@@ -144,6 +147,22 @@ the anchor, revisit the inputs and record any human override with its rationale.
 Store canonical reports as `<severity>-<slug>.md`, with severity set to T0,
 T1, T2, or T3, so filesystem order surfaces urgent issues. Also index findings
 by subsystem and invariant.
+
+Put the target repository, full commit, optional branch or tag, tree hash when
+available, and report date at the top. A finding analyzed at another revision
+must carry an explicit override. Every finding must have at least one verified
+code anchor containing repository, repository-relative path, line start, line
+end, and what the range establishes. Use one contiguous range per anchor and
+list the defect location first. For omissions, cite the map, switch, validator,
+or state machine where the missing behavior belongs. Name dependency and
+external repositories explicitly.
+
+Preserve any reporter-provided severity, scale, and rationale. Record the
+independent T0 through T3 triage rating separately and never overwrite the
+reporter's rating. Code snippets are optional and do not replace pinned code
+anchors. External reports need not match this format; the reviewing agent owns
+normalization and should not make a reporter reformat facts recoverable from
+the pinned source.
 
 Assign every canonical report a lifecycle status. `active` means the reproduced
 behavior is still considered a security issue. `resolved` requires the original

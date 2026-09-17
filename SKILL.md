@@ -15,6 +15,8 @@ Read [METHODOLOGY.md](METHODOLOGY.md) completely before beginning a review. Pres
 
 Before deciding whether a reproduced behavior is a vulnerability or assigning
 its severity, read and apply [the vulnerability triage gates](references/VULNERABILITY_TRIAGE.md).
+Before promoting, indexing, or exporting a finding, read and strictly apply
+[the security reporting policy](references/REPORTING.md).
 
 The user operates this workflow through conversation. Own catalog initialization and maintenance. Do not instruct the user to fill templates or edit catalog files. If the target repository is not identifiable, ask for its path or URL. Otherwise inspect it and begin.
 
@@ -62,8 +64,10 @@ Completing onboarding, threat-model approval, or invariant verification never au
 - Reject security framing for ordinary operation, documented tradeoffs, already-equivalent actor capabilities, implausible configurations, non-sensitive observations, and unmeasured low-impact resource claims. Preserve any narrower residual defect and ordinary product issue.
 - Keep hypotheses separate from findings. Seek counterevidence before reproduction.
 - Promote a hypothesis only after a meaningful dynamic reproduction with a valid control.
-- Organize findings by subsystem and invariant, deduplicate by root cause, and sort canonical reports by severity from T0 through T3.
+- Keep one independently fixable defect per canonical finding. Merge only duplicate descriptions of the same defect and remediation point. Link defects that share a root cause but need separate fixes. Sort canonical reports by severity from T0 through T3.
 - Record Severity, Attack Vector, Exploitability, Impact, and Virality using the approved project policy and the T0 through T3 anchors. Do not let one defect inherit impact or reachability from another defect on the same causal chain.
+- Pin each report to a named repository commit and date. Require at least one verified repository-relative `file:line` anchor per finding, one contiguous range per anchor, with the defect location first. Name external repositories explicitly.
+- Preserve the reporter's original severity and scale separately from the triage severity. For every proof, state what it establishes and does not establish. Never require pasted code when pinned repository anchors suffice.
 - Track every canonical finding as active, resolved, or discarded. Preserve its evidence, historical severity, stable link, and dated disposition history. Exclude inactive records from active counts without deleting them.
 - Mark a finding resolved only after reproducing the original issue against a named patched revision and recording regression evidence. Mark it discarded only when later evidence or an authorized human requirement decision invalidates the security oracle, not because a fix is inconvenient.
 - Keep severity and confidence separate. Preserve unresolved and disproven hypotheses.
