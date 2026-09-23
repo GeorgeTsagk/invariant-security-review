@@ -44,9 +44,11 @@ For each invariant, perform an ambiguity sweep. Look for overloaded security ter
 
 Track requirement status, human verification, and enforcement status separately. Use the invariant template.
 
+Once the initial invariant draft exists, stop. Present the discovered subsystems with stable names, short responsibilities, and a top-level summary line each (for example `Subsystem X: 10 invariants generated, 3 gray, 1 conflicting`), giving the invariant count and ambiguity breakdown so the user can judge review effort per subsystem. Ask the user which subsystem invariants they want to review, with a distinct `Review all` option. Never preselect or imply it. Wait for the selection before any verification, interview, or scan work. Unselected invariants remain pending and are offered again later. Record the selection in the pass file.
+
 ## 4. Resolve material ambiguity through interviews
 
-Investigate code and specifications first. Proactively interview the user whenever a requirement is vague, undefined, conflicting, materially unclear, or admits multiple reasonable security interpretations. Do not resolve gray areas by selecting the interpretation that best matches current code.
+Conduct verification and interviews only for the user-selected review scope. Investigate code and specifications first. Proactively interview the user whenever a requirement is vague, undefined, conflicting, materially unclear, or admits multiple reasonable security interpretations. Do not resolve gray areas by selecting the interpretation that best matches current code.
 
 Present one concrete distinguishing example at a time when practical. Explain the plausible interpretations and how each changes the test oracle. Record the answer with date, provenance, affected invariant IDs, accepted meaning, limits, and conflicts.
 

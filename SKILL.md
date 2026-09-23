@@ -39,17 +39,19 @@ An inventory listing alone is not a substantive read. Agent identity is provenan
 2. Inspect source, history, documentation, configuration, dependency metadata, and available specifications.
 3. Populate missing project context and update stale context in `PROJECT.md`, `BASELINE.md`, and `THREAT_MODEL.md`. Preserve prior sourced decisions. Mark unavailable facts as unknown instead of inventing them.
 4. Reuse and reassess existing invariant records before deriving missing system, subsystem, or protocol invariants. Classify each as clear, gray, conflicting, or unknown.
-5. Present the system invariants first in short, readable language. Then present subsystem and protocol invariants in manageable batches.
-6. Require the user to verify, correct, reject, dispute, or defer every proposed invariant. Maintain the result in `interviews/VERIFICATION.md`.
-7. For every gray, conflicting, or unknown invariant, ask a concrete scenario question that distinguishes the plausible meanings. Record each answer in `interviews/DECISIONS.md` and update affected records.
-8. Present the resulting threat model and verified invariant scope.
-9. Rank the discovered subsystems by review priority using protected-asset impact, attacker reachability, trust boundaries, privilege, state complexity, recovery risk, code churn, and unresolved uncertainty. Explain each rank briefly. Review priority is not finding severity.
-10. Stop and ask the user which subsystems to scan. Use a multi-select control when available, or a numbered checklist that accepts multiple choices. Include a recommended selection and a distinct `Global scan` option covering every in-scope subsystem.
-11. Wait for the user's selection. Record it in the scan manifest and analyze only the selected scope. Choosing `Global scan` supersedes individual choices.
+5. **Stop.** Invariant generation is now complete enough to review. Present the discovered subsystems with stable names, short responsibilities, and a top-level summary line each, for example `Subsystem X: 10 invariants generated, 3 gray, 1 conflicting, 1 retired`. The summary must give the invariant count and the ambiguity breakdown (clear, gray, conflicting, unknown) so the user can judge review effort per subsystem before choosing. Ask the user which subsystem invariants they would like to review. Use a multi-select control when available, or a numbered checklist that accepts multiple choices. Include a recommended selection and a distinct `Review all` option covering every subsystem. Never preselect or imply `Review all`.
+6. Wait for the user's selection. This stop is mandatory: never continue from invariant generation into verification, gray-area interviews, or scanning without it. Record the selection in the pass file. Unselected invariants stay pending; offer to return to them later.
+7. Present the system invariants first in short, readable language. Then present the selected subsystem and protocol invariants in manageable batches. Do not present unselected invariants for verification.
+8. Require the user to verify, correct, reject, dispute, or defer every proposed invariant in the selected scope. Maintain the result in `interviews/VERIFICATION.md`.
+9. For every gray, conflicting, or unknown invariant in the selected scope, ask a concrete scenario question that distinguishes the plausible meanings. Record each answer in `interviews/DECISIONS.md` and update affected records.
+10. Present the resulting threat model and verified invariant scope.
+11. Rank the discovered subsystems by review priority using protected-asset impact, attacker reachability, trust boundaries, privilege, state complexity, recovery risk, code churn, and unresolved uncertainty. Explain each rank briefly. Review priority is not finding severity.
+12. Stop and ask the user which subsystems to scan. Use a multi-select control when available, or a numbered checklist that accepts multiple choices. Include a recommended selection and a distinct `Global scan` option covering every in-scope subsystem.
+13. Wait for the user's selection. Record it in the scan manifest and analyze only the selected scope. Choosing `Global scan` supersedes individual choices.
 
 Ask for information incrementally. Do not present blank templates or a bulk questionnaire. Continue evidence collection that does not depend on an unanswered question. Do not replace invariant review with a generic yes-or-no approval question.
 
-Completing onboarding, threat-model approval, or invariant verification never authorizes a system-wide scan. Do not begin broad entry-point tracing, hypothesis generation, or dynamic experiments until the user passes the subsystem-selection gate.
+Completing onboarding, threat-model approval, or invariant verification never authorizes a system-wide scan. Do not begin broad entry-point tracing, hypothesis generation, or dynamic experiments until the user passes the subsystem-selection gate. Two stops are mandatory: the review-scope selection after invariant generation (which subsystem invariants to verify), and the scan-scope selection after verification (which subsystems to scan).
 
 ## Required behavior
 
