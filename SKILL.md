@@ -59,6 +59,7 @@ Completing onboarding, threat-model approval, or invariant verification never au
 - Create and update the catalog files on the user's behalf throughout the review.
 - Register every agent pass and make its identity, scope, invariant reads, invariant writes, and disposition discoverable from `REVIEW_LOG.md`.
 - Define system, subsystem, and protocol invariants before treating implementation behavior as correct.
+- Write invariants short and direct: the property in a sentence or two, detail in the structured fields, never a verbose essay.
 - Investigate specifications and code before asking the user. Actively search each invariant for vague, undefined, disputed, conflicting, or materially unclear semantics. Record answers as scoped decisions, not universal assumptions.
 - Track requirement status separately from enforcement status.
 - Trace attacker-controlled input through the complete implementation path to a meaningful consequence.

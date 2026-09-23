@@ -40,6 +40,8 @@ Derive candidate invariants from normative specifications, architecture, interfa
 
 Each invariant must state a falsifiable property, category, scope, preconditions, trusted services, attacker input, legitimate exceptions, consumer obligations, temporal cases, and an observable oracle. Identify what each producer promises and each consumer assumes. Avoid circular reliance between layers.
 
+Invariants are short and direct. State the property itself plainly, in a sentence or two, with the structured fields carrying the detail. An invariant is never a verbose essay, a tutorial, or a design document; background, rationale, and analysis belong in the linked review records, not in the property.
+
 For each invariant, perform an ambiguity sweep. Look for overloaded security terms, unstated time windows, lifecycle transitions, partial success, stale or conflicting authorities, local versus remote state, recovery behavior, producer-consumer mismatches, and cases where tests merely preserve current implementation behavior. Classify the invariant as clear, gray, conflicting, or unknown and explain the classification.
 
 Track requirement status, human verification, and enforcement status separately. Use the invariant template.
